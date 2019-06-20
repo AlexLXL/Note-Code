@@ -1,0 +1,2 @@
+# Note-Code
+from myself
