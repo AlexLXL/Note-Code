@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';		// === 从antd引入Form
 
 class Login extends Component{
   handleSubmit = (e) => {
@@ -29,7 +29,7 @@ class Login extends Component{
   };
   
   render() {
-    const { getFieldDecorator } = this.props.form;    // === 2、创建getFieldDecorator ，用于校验form表单 ===
+    const { getFieldDecorator } = this.props.form;    // === 2、创建getFieldDecorator ，用于校验form表单 === 高阶组件 ===
 
     return <div className="login">
         <Form onSubmit={this.handleSubmit} className="login-form">
@@ -66,4 +66,4 @@ class Login extends Component{
 }
 
 // 返回值是一个新组件   <Form(Login)><Login></Form(Login)>
-export default Form.create()(Login)                   // === 1、创建props属性form，这是高阶组件(传Login组件) ===
+export default Form.create()(Login)                   // === 1、创建props属性form === 高阶组件(传Login) ===
