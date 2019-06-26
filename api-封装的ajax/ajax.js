@@ -11,14 +11,14 @@ export default function ajax(url, data, method='get') { // data用的时候传�
     }
   }
 
-  return axios[method](url,reqParam)     // 没加配置对象导致一直返回的statue是1.===这里涉及跨域，用到代理服务器=== 返回的promise对象？？===
-    .then((res) => {                              // res就是postman测试api返回的那个内容
+  return axios[method](url,reqParam)     				// 返回的是promise对象，使用时结合async和await. === 这里涉及跨域，可用代理服务器 === 
+    .then((res) => {                              		// 请求返回的内容res
       const { data } = res;
 
       if(data.status === 0) {
-        return data.data || {};     // === 上面的return根本返回不了任何东西，没有返回promise对象，实际返回的是这个data.data，需要看一下promise返回 ===
+        return data.data || {};     					// 上面的return本质返回的是promise  .then  .catch的返回值
       }else {
-        message.error(data.msg, 2);               // 登录失败，账号或者密码错误
+        message.error(data.msg, 2);              		 // 登录失败
       }
     })
     .catch((err) => {
