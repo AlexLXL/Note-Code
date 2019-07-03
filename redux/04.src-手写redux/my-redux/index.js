@@ -32,6 +32,6 @@ export function createStore(reducers) {
   }
 }
 
-export function combineReducers() {
-  
-}
+export function combineReducers({
+	
+})
