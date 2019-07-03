@@ -12,4 +12,5 @@ import { Provider } from 'react-redux'
 import App from './App';
 import store from './redux/store'
 
+// react-redux的 Provider 1、更新组件  2、那个容器组件需要store，帮它传进去(通过context的方法)
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
