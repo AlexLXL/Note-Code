@@ -1,6 +1,13 @@
 import React,{ Component, Fragment } from 'react';
 import PropTypes from 'prop-types'
 
+/**
+ * 使用了react-redux的容器组件后
+ *  1. 状态num在props上
+ *  2. 创建action和dispatch合并在一起，合并后的功能也在props上
+ *  （合并后直接使用 ：this.props.increment(this.state.value);）
+ */
+
 export default class Counter extends Component{
   static propTypes = {
     num: PropTypes.number.isRequired,
@@ -22,23 +29,12 @@ export default class Counter extends Component{
     this.props.increment(this.state.value);
   };
 
-  decrement = () => {
-    this.props.decrement(this.state.value);
-  };
-
-  incrementIfOdd = () => {
-    const { num } = this.props;
-    if((num & 1) === 1){
-      this.props.increment(this.state.value);
-    }
-  };
-
   incrementAsync = () => {
     this.props.incrementAsync(this.state.value);
   };
 
   render() {
-    const {num} = this.props;
+    const {num} = this.props; // 在props拿状态num
 
     return <Fragment>
       <h2>click {num} times</h2>
@@ -48,8 +44,6 @@ export default class Counter extends Component{
         <option value="3">3</option>
       </select>
       <button onClick={this.increment}>+</button>
-      <button onClick={this.decrement}>-</button>
-      <button onClick={this.incrementIfOdd}>increment if odd</button>
       <button onClick={this.incrementAsync}>increment async</button>
     </Fragment>;
   }

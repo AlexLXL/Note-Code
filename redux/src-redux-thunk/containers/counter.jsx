@@ -1,29 +1,13 @@
 import { connect } from 'react-redux';
 
 import Counter from '../components/counter';
-import { increment, decrement, incrementAsync, error } from '../redux/action-creator'
+import { increment, decrement, incrementAsync, error } from '../redux/action-creator' // 导入各个action工厂函数
 
-/*
-const mapStateToProps = (state) => {   // 遍历状态，通过prop传给要用的UI组件
-  return {
-    num: state
-  }
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    increment: (value) => {
-      const action = increment(value);
-      dispatch(action)
-    },
-    decrement: (value) => {
-      dispatch(decrement(value))
-    }
-  }
-};
-*/
-
+/**
+ * react-redux
+ *   1.高阶组件connect封装action和dispatch到一起，传到Counter普通组件props中使用
+ */
 export default connect(
   (state) => ({num: state}),
   { increment, decrement, incrementAsync, error }
-)(Counter)  // 这里是直接传,而不是组件的方式来传
+)(Counter)              // 注意：这里不是传组件

@@ -10,11 +10,11 @@ export const error = (value) => ({ type:ERROR, data:value });
 export const incrementAsync = (value) => {
   return (dispatch) => {
     setTimeout(() => {
-      // 发请求
+      // 模拟发送请求
       // 成功
-      // dispatch(increment(value));
+      dispatch(increment(value));
       // 失败
-      dispatch(error('请求失败'))
+      // dispatch(error('请求失败'))
     },1000)
   }
-}
+};
