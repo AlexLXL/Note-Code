@@ -1,2 +1,2 @@
 # Note-Code
-from myself
+from myself node
