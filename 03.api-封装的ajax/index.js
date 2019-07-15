@@ -1,15 +1,16 @@
 import Ajax from "./ajax";
 import jsonp from 'jsonp'
 import {message} from 'antd'
+const prefix = process.env.NODE_ENV === "development" ? "" : "http://localhost:5000"
 
 // export const reqLogin = (data) => ajax('/login', data, 'POST');
 // 请求参数3-4个以上使用
 // export const reqLogin = ({username, password}) => ajax('/login', {username, password}, 'POST');
 // 请求参数1-2个使用
-export const reqLogin = (username, password) => Ajax('/login',{ username, password },'post');
+export const reqLogin = (username, password) => Ajax(prefix + '/login',{ username, password },'post');
 
 // 发送验证的请求
-export const reqValidateUserInfo = (id) => Ajax('/validate/user',{ id },'post');
+export const reqValidateUserInfo = (id) => Ajax(prefix + '/validate/user',{ id },'post');
 
 export const reqWeather = function () { // 为了防止每次有模块加载api就发天气请求
   let cancel = null;
@@ -35,10 +36,10 @@ export const reqWeather = function () { // 为了防止每次有模块加载api�
   }
 };
 
-export const reqCategory = (parentId) => Ajax('/manage/category/list',{parentId});
+export const reqCategory = (parentId) => Ajax(prefix + '/manage/category/list',{parentId});
 
-export const reqAddCategory = (parentId, categoryName) => Ajax('/manage/category/add',{parentId, categoryName},'post');
+export const reqAddCategory = (parentId, categoryName) => Ajax(prefix + '/manage/category/add',{parentId, categoryName},'post');
 
-export const reqUpdateName = (categoryId, categoryName) => Ajax('/manage/category/update',{categoryId, categoryName},'post');
+export const reqUpdateName = (categoryId, categoryName) => Ajax(prefix + '/manage/category/update',{categoryId, categoryName},'post');
 
 
